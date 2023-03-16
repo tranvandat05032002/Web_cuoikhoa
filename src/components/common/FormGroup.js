@@ -1,0 +1,12 @@
+import React from "react";
+
+const FormGroup = (props) => {
+  const { children } = props;
+  return (
+    <div className="mb-[15px] lg:mb-5 flex flex-col gap-y-2">
+      {children}
+    </div>
+  );
+};
+
+export default FormGroup;
