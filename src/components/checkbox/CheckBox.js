@@ -1,13 +1,15 @@
 import React from "react";
 import IconCheck from "../icons/iconCheck";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 const CheckBox = ({ name, onClick = () => {}, checked = false, children }) => {
   return (
     <div className="flex items-start gap-x-5">
       <div
         className={` inline-flex items-center justify-center w-5 h-5 border rounded cursor-pointer ${
-          checked ? "bg-primary border-primary" : "border-text4"
+          checked
+            ? "bg-primary border-primary"
+            : "border-text4 dark:border-text3"
         }`}
         onClick={onClick}
       >
@@ -17,7 +19,7 @@ const CheckBox = ({ name, onClick = () => {}, checked = false, children }) => {
           className="hidden"
           name={name}
         />
-        <span className="">
+        <span className={`${checked ? "" : "opacity-0 invisible"}`}>
           <IconCheck
             className="text-white"
             height="w-4"
@@ -25,14 +27,18 @@ const CheckBox = ({ name, onClick = () => {}, checked = false, children }) => {
           ></IconCheck>
         </span>
       </div>
-      {children && <label onClick={onClick} className="font-medium text-text3">{children}</label>}
+      {children && (
+        <label onClick={onClick} className="font-medium text-text3">
+          {children}
+        </label>
+      )}
     </div>
   );
 };
 CheckBox.propTypes = {
-    name: PropTypes.string,
-    onClick: PropTypes.func,
-    checked: PropTypes.bool,
-    children: PropTypes.node
-}
+  name: PropTypes.string,
+  onClick: PropTypes.func,
+  checked: PropTypes.bool,
+  children: PropTypes.node,
+};
 export default CheckBox;

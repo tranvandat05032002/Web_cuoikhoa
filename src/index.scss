@@ -11,3 +11,6 @@
 .debug-css {
   border: 1px solid red;
 }
+input:focus + .error-input {
+  display: none;
+}

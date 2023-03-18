@@ -1,34 +1,58 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { Button, CheckBox, Input, Label } from "../components";
+import { IconEyeToggle } from "../components/icons";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import FormGroup from "../components/common/FormGroup";
 import LayoutAuthentication from "../layout/LayoutAuthentication";
+import React from "react";
+import useToggleValue from "../hooks/useToggleValue";
 
 const SignUpPagePage = () => {
-  const { handleSubmit, control } = useForm({});
-  const [acceptTerm, setAcceptTerm] = React.useState(false);
-
+  const validateScheme = yup.object({
+    name: yup.string().required("This field is required"),
+    email: yup
+      .string()
+      .required("This field is required")
+      .email("Invalid email address"),
+    password: yup
+      .string()
+      .required("This field is required")
+      .min(8, "Password must be 8 character "),
+  });
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    mode: "onSubmit",
+    resolver: yupResolver(validateScheme),
+  });
   const handleSignUp = (values) => {
     // console.log(values)
-    console.log(values)
   };
-  const handleTogglerTerm = () => {
-    setAcceptTerm(!acceptTerm);
-  };
+  const {
+    handleToggleValue: handleTogglePassword,
+    booleanValue: showPassword,
+  } = useToggleValue(false);
+  const { handleToggleValue: handleTogglerTerm, booleanValue: acceptTerm } =
+    useToggleValue(false);
   return (
-    <LayoutAuthentication heading="SignUpPage">
+    <LayoutAuthentication heading="SignUp">
       <p className="text-xs font-normal text-text3 mb-[25px] lg:mb-[20px] lg:text-sm text-center">
         Already have an account?{" "}
         <Link to={"/sign-in"} className="font-medium underline text-primary">
           Sign in
         </Link>
       </p>
-      <button className="flex items-center justify-center w-full py-[13px] gap-x-[10px] mb-5 font-medium border border-strock rounded-[10px]">
+      <button className="flex items-center justify-center w-full py-[13px] gap-x-[10px] mb-5 dark:border-darkStroke font-medium border border-strock rounded-[10px]">
         <img srcSet="/google.png 2x" alt="icon-google" />
-        <span className="text-base text-text2">Sign up with google</span>
+        <span className="text-base text-text2 dark:text-white">
+          Sign up with google
+        </span>
       </button>
-      <p className="text-text2 text-center text-xs lg:text-[14px] font-thin">
+      <p className="text-text2 text-center text-xs lg:text-[14px] font-thin dark:text-white">
         Or sign up with email
       </p>
       <form onSubmit={handleSubmit(handleSignUp)}>
@@ -38,6 +62,7 @@ const SignUpPagePage = () => {
             control={control}
             type="text"
             name="name"
+            errors={errors && errors.name?.message}
             placeholder="Jhon Doe"
           ></Input>
         </FormGroup>
@@ -47,6 +72,7 @@ const SignUpPagePage = () => {
             control={control}
             type="email"
             name="email"
+            errors={errors && errors.email?.message}
             placeholder="example@gmail.com"
           ></Input>
         </FormGroup>
@@ -54,10 +80,16 @@ const SignUpPagePage = () => {
           <Label htmlFor="password">Password*</Label>
           <Input
             control={control}
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
+            errors={errors && errors.password?.message}
             placeholder="Create a password"
-          ></Input>
+          >
+            <IconEyeToggle
+              onClick={handleTogglePassword}
+              statusEye={showPassword}
+            ></IconEyeToggle>
+          </Input>
         </FormGroup>
         <div className="flex items-start gap-x-5">
           <CheckBox
@@ -65,9 +97,7 @@ const SignUpPagePage = () => {
             onClick={handleTogglerTerm}
             name={"term"}
           >
-            <p
-              className="flex-1 text-sm cursor-pointer text-text4"
-            >
+            <p className="flex-1 text-xs cursor-pointer lg:text-sm text-text4 dark:text-text2">
               I agree to the{" "}
               <span className="underline text-secondary">Terms of Use</span> and
               have read and understand the{" "}
