@@ -23,7 +23,7 @@ const Input = (props) => {
         type={type}
         placeholder={errors.length > 0 ? "" : placeholder}
         className={`py-[15px] w-full focus:outline-none px-[25px] border font-medium bg-transparent rounded-[10px] text-text1 placeholder:text-text4 dark:placeholder:text-text2 placeholder:font-normal ${
-          errors ? "border-error" : "border-strock dark:border-darkStroke dark:text-white"
+          errors ? "border-error text-error" : "border-strock text-text1 dark:border-darkStroke dark:text-white"
         } ${children ? "pr-16" : ""}`}
         {...rest}
         {...field}

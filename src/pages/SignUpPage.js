@@ -8,6 +8,7 @@ import FormGroup from "../components/common/FormGroup";
 import LayoutAuthentication from "../layout/LayoutAuthentication";
 import React from "react";
 import useToggleValue from "../hooks/useToggleValue";
+import ButtonGoogle from "../components/button/ButtonGoogle";
 
 const SignUpPagePage = () => {
   const validateScheme = yup.object({
@@ -46,12 +47,7 @@ const SignUpPagePage = () => {
           Sign in
         </Link>
       </p>
-      <button className="flex items-center justify-center w-full py-[13px] gap-x-[10px] mb-5 dark:border-darkStroke font-medium border border-strock rounded-[10px]">
-        <img srcSet="/google.png 2x" alt="icon-google" />
-        <span className="text-base text-text2 dark:text-white">
-          Sign up with google
-        </span>
-      </button>
+      <ButtonGoogle text="Sign up with google"></ButtonGoogle>
       <p className="text-text2 text-center text-xs lg:text-[14px] font-thin dark:text-white">
         Or sign up with email
       </p>
