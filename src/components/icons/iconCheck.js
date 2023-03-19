@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "../../utils/classNames";
 
 const IconCheck = ({ className = "", width = "w-6", height = "h-6" }) => {
   return (
@@ -8,7 +9,7 @@ const IconCheck = ({ className = "", width = "w-6", height = "h-6" }) => {
       viewBox="0 0 24 24"
       strokeWidth="2.8"
       stroke="currentColor"
-      className={`${className} ${height} ${width}`}
+      className = {classNames(className, width, height)}      
     >
       <path
         strokeLinecap="round"

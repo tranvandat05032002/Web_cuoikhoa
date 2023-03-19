@@ -1,6 +1,7 @@
 import React from "react";
 import IconCheck from "../icons/iconCheck";
 import PropTypes from "prop-types";
+import classNames from "../../utils/classNames";
 
 const CheckBox = ({ name, onClick = () => {}, checked = false, children }) => {
   return (
@@ -19,7 +20,7 @@ const CheckBox = ({ name, onClick = () => {}, checked = false, children }) => {
           className="hidden"
           name={name}
         />
-        <span className={`${checked ? "" : "opacity-0 invisible"}`}>
+        <span className={classNames(checked ? "" : "opacity-0 invisible")}>
           <IconCheck
             className="text-white"
             height="w-4"
