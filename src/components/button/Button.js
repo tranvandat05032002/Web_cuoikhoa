@@ -29,7 +29,7 @@ const Button = ({
   );
 };
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
 };
