@@ -1,15 +1,21 @@
 import React from "react";
+import Heading from "../components/common/Heading";
 import LayoutDashboard from "../layout/LayoutDashboard";
-
+import CampaignGrid from "../modules/campaign/CampaignGrid";
+import CampaignItem from "../modules/campaign/CampaignItem";
+import { v4 as uuidV4 } from "uuid";
 const DashboardPage = () => {
   return (
     <LayoutDashboard>
-      <div>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa
-        voluptates sequi ipsum porro, iure asperiores corporis doloremque enim
-        exercitationem at odio, magni libero? Obcaecati rerum vel eaque, commodi
-        aliquid repudiandae.
-      </div>
+      <Heading number="4">Your Campaign</Heading>
+      <Heading>Popular Campaign</Heading>
+      <CampaignGrid>
+        {Array(4)
+          .fill(0)
+          .map((item) => (
+            <CampaignItem key={uuidV4()}></CampaignItem>
+          ))}
+      </CampaignGrid>
     </LayoutDashboard>
   );
 };

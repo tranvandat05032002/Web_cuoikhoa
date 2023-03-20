@@ -8,9 +8,11 @@ import IconProfile from "./iconProfile";
 import IconSearch from "./iconSearch";
 import IconUpTrending from "./iconUpTrending";
 import IconWithdraw from "./iconWithdraw";
-import IconCampaign from "./iconCampaign"
+import IconCampaign from "./iconCampaign";
 import IconLightDark from "./iconLightDark";
+import IconFolder from "./iconFolder";
 export {
+  IconFolder,
   IconCheck,
   IconEyeToggle,
   IconSearch,
@@ -22,5 +24,5 @@ export {
   IconPayment,
   IconWithdraw,
   IconCampaign,
-  IconLightDark
+  IconLightDark,
 };

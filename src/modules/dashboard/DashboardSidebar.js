@@ -49,7 +49,7 @@ const sidebarLinks = [
 ];
 const DashboardSidebar = () => {
   return (
-    <div className="w-full md:w-[76px] px-[14px] flex flex-col rounded-[20px] py-10 bg-white shadow-[10px_10px_20px_rgba(218,_213,_213,_0.15)]">
+    <div className="w-full md:w-[76px] px-[14px] flex flex-col rounded-[20px] py-10 bg-white shadow-[10px_10px_20px_rgba(218,_213,_213,_0.15)] flex-shrink-0">
       {sidebarLinks.map((link) => (
         <NavLink
           key={uuidV4()}
