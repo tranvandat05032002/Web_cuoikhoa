@@ -4,9 +4,11 @@ import { withErrorBoundary } from "react-error-boundary";
 import ErrorComponent from "../components/common/ErrorComponent";
 import DashboardTopBar from "../modules/dashboard/DashboardTopBar";
 import DashboardSidebar from "../modules/dashboard/DashboardSidebar";
+import Overlay from "../components/common/Overlay";
 const LayoutDashboard = ({ children }) => {
   return (
     <div className="p-10 bg-lite dark:bg-darkbg">
+      <Overlay></Overlay>
       <DashboardTopBar></DashboardTopBar>
       <div className="flex gap-x-10">
         <DashboardSidebar></DashboardSidebar>

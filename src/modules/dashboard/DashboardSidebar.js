@@ -44,10 +44,12 @@ const sidebarLinks = [
   {
     icon: <IconLightDark></IconLightDark>,
     title: "<Light />Dark",
-    url: "#",
+    url: "/dark",
   },
 ];
 const DashboardSidebar = () => {
+  const navLinkClass =
+    "flex p-[12px] mb-[30px] cursor-pointer items-center gap-x-5 md:w-12 md:h-12 md:justify-center md:rounded-lg last:bg-white last:mt-auto last:shadow-sdPrimary";
   return (
     <div className="w-full md:w-[76px] px-[14px] flex flex-col rounded-[20px] py-10 bg-white shadow-[10px_10px_20px_rgba(218,_213,_213,_0.15)] flex-shrink-0">
       {sidebarLinks.map((link) => (
@@ -56,11 +58,11 @@ const DashboardSidebar = () => {
           to={link.url}
           className={({ isActive }) =>
             isActive
-              ? "bg-extraPrimary text-primary [&>span]:text-primary flex p-[12px] mb-[30px] cursor-pointer items-center gap-x-5 md:w-12 md:h-12 md:justify-center md:rounded-lg last:bg-white last:mt-auto last:shadow-sdPrimary"
-              : "flex p-[12px] mb-[30px] cursor-pointer items-center gap-x-5 md:w-12 md:h-12 md:justify-center md:rounded-lg last:bg-white last:mt-auto last:shadow-sdPrimary"
+              ? `bg-extraPrimary text-primary ${navLinkClass}`
+              : `${navLinkClass} text-icon-color`
           }
         >
-          <span className="text-icon-color">{link.icon}</span>
+          <span >{link.icon}</span>
           <span className="md:hidden"> {link.title}</span>
         </NavLink>
       ))}

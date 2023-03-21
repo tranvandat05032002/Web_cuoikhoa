@@ -11,8 +11,10 @@ import IconWithdraw from "./iconWithdraw";
 import IconCampaign from "./iconCampaign";
 import IconLightDark from "./iconLightDark";
 import IconFolder from "./iconFolder";
+import IconClose from "./iconClose";
 export {
   IconFolder,
+  IconClose,
   IconCheck,
   IconEyeToggle,
   IconSearch,
