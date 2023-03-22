@@ -5,17 +5,7 @@ import { withErrorBoundary } from "react-error-boundary";
 import ErrorComponent from "../common/ErrorComponent";
 import classNames from "../../utils/classNames";
 
-const Input = (props) => {
-  const {
-    className,
-    type = "text",
-    name,
-    placeholder,
-    control,
-    errors = "",
-    children,
-    ...rest
-  } = props;
+const Input = ({className = "", type = "text", name, placeholder = "", control, errors = "", children, ...rest}) => {
   const { field } = useController({ name, control, defaultValue: "" });
   return (
     <div className="relative">

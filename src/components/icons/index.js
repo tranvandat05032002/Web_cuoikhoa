@@ -12,7 +12,11 @@ import IconCampaign from "./iconCampaign";
 import IconLightDark from "./iconLightDark";
 import IconFolder from "./iconFolder";
 import IconClose from "./iconClose";
+import IconPlus from "./iconPlus";
+import IconPlusSmall from "./iconPlusSmall";
 export {
+  IconPlusSmall,
+  IconPlus,
   IconFolder,
   IconClose,
   IconCheck,
