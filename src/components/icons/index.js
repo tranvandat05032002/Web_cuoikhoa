@@ -14,9 +14,11 @@ import IconFolder from "./iconFolder";
 import IconClose from "./iconClose";
 import IconPlus from "./iconPlus";
 import IconPlusSmall from "./iconPlusSmall";
+import IconCoin from "./iconCoin";
 export {
   IconPlusSmall,
   IconPlus,
+  IconCoin,
   IconFolder,
   IconClose,
   IconCheck,

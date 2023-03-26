@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Textarea } from "../../components";
+import { Button, Textarea } from "../../components";
 import FormGroup from "../../components/common/FormGroup";
 import FormRow from "../../components/common/FormRow";
 import { Dropdown } from "../../components/dropdown";
@@ -10,6 +10,7 @@ import ImageUploader from "quill-image-uploader";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import { IconCoin } from "../../components/icons";
 Quill.register("modules/imageUploader", ImageUploader);
 const CampaignAddNew = () => {
   const [content, setContent] = React.useState("");
@@ -45,6 +46,7 @@ const CampaignAddNew = () => {
     []
   );
   const { handleSubmit, control } = useForm();
+  const handleSubmitCampaign = () => {};
   return (
     <div className="bg-white rounded-xl py-10 px-[66px]">
       <div className="text-center">
@@ -94,6 +96,105 @@ const CampaignAddNew = () => {
           />
         </FormGroup>
       </form>
+
+      <div className="">
+        <div className="flex text-white bg-secondary rounded-[10px] items-center mb-10">
+          <div className="text-[25px] px-[45px] py-[31px] flex items-center justify-start gap-x-6 font-bold">
+            <IconCoin></IconCoin>
+            <h1 className="">You will get 90% of total raised</h1>
+          </div>
+          <img srcSet="/Perk/Union.png 2x" alt="" className="" />
+        </div>
+        <form onSubmit={handleSubmitCampaign}>
+          <FormRow>
+            <div>
+              <FormGroup>
+                <Label>Goal *</Label>
+                <Input
+                  name={"goal"}
+                  placeholder="$0.00 USD"
+                  control={control}
+                ></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label>Amount Prefilled</Label>
+                <Input
+                  placeholder="Amount Prefilled"
+                  control={control}
+                  name="amount"
+                ></Input>
+              </FormGroup>
+              <p className="text-sm mb-[25px] font-medium text-text3">
+                It will help fill amount box by click, place each amount by
+                comma, ex: 10,20,30,40
+              </p>
+              <FormGroup>
+                <Label>Campaign End Method</Label>
+                <Dropdown>
+                  <Dropdown.Select placeholder="Select one">
+                    <Dropdown.Option>Tran Van Dat</Dropdown.Option>
+                    <Dropdown.Option>Nguyen Thi Hanh</Dropdown.Option>
+                    <Dropdown.Option>Nguyễn Huỳnh Bảo Trân</Dropdown.Option>
+                  </Dropdown.Select>
+                </Dropdown>
+              </FormGroup>
+              <FormGroup>
+                <Label>Start Date</Label>
+                <Input
+                  name="startDate"
+                  placeholder="Start Date"
+                  control={control}
+                ></Input>
+              </FormGroup>
+            </div>
+            <div>
+              <FormGroup>
+                <Label>Raised Amount *</Label>
+                <Input
+                  placeholder="$0.00 USD"
+                  control={control}
+                  name="raised"
+                ></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label>Video</Label>
+                <Input
+                  placeholder="Video"
+                  name="video"
+                  control={control}
+                ></Input>
+              </FormGroup>
+              <p className="text-sm font-medium text-text3 mb-[45px]">
+                Place Youtube or Vimeo Video URL
+              </p>
+              <FormGroup>
+                <Label>Country</Label>
+                <Dropdown>
+                  <Dropdown.Select placeholder="Country">
+                    <Dropdown.Option>Tran van C</Dropdown.Option>
+                    <Dropdown.Option>Ngo Quynh Diem Chau</Dropdown.Option>
+                    <Dropdown.Option>Phan Thi Kieu Tram</Dropdown.Option>
+                  </Dropdown.Select>
+                </Dropdown>
+              </FormGroup>
+              <FormGroup>
+                <Label>End Date</Label>
+                <Input
+                  name="endDate"
+                  placeholder="End Date"
+                  control={control}
+                ></Input>
+              </FormGroup>
+            </div>
+          </FormRow>
+        </form>
+
+        <div className="flex items-center justify-center mt-[6px]">
+          <Button kind="primary" className="px-10">
+            Submit new campaign{" "}
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
