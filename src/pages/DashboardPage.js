@@ -1,6 +1,5 @@
 import React from "react";
 import Heading from "../components/common/Heading";
-import LayoutDashboard from "../layout/LayoutDashboard";
 import CampaignGrid from "../modules/campaign/CampaignGrid";
 import CampaignItem from "../modules/campaign/CampaignItem";
 import { v4 as uuidV4 } from "uuid";
@@ -8,7 +7,7 @@ import Gap30 from "../components/common/Gap30";
 import CampaignFeature from "../modules/campaign/CampaignFeature";
 const DashboardPage = () => {
   return (
-    <LayoutDashboard>
+    <React.Fragment>
       <Heading number="4">Your Campaign</Heading>
       <Gap30>
         <CampaignFeature></CampaignFeature>
@@ -31,7 +30,7 @@ const DashboardPage = () => {
             <CampaignItem key={uuidV4()}></CampaignItem>
           ))}
       </CampaignGrid>
-    </LayoutDashboard>
+    </React.Fragment>
   );
 };
 

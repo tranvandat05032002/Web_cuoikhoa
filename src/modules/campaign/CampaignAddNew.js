@@ -97,8 +97,8 @@ const CampaignAddNew = () => {
         </FormGroup>
       </form>
 
-      <div className="">
-        <div className="flex text-white bg-secondary rounded-[10px] items-center mb-10">
+      <FormGroup>
+        <div className="flex text-white bg-secondary rounded-[10px] items-center mb-[28px]">
           <div className="text-[25px] px-[45px] py-[31px] flex items-center justify-start gap-x-6 font-bold">
             <IconCoin></IconCoin>
             <h1 className="">You will get 90% of total raised</h1>
@@ -124,24 +124,26 @@ const CampaignAddNew = () => {
                   name="amount"
                 ></Input>
               </FormGroup>
-              <p className="text-sm mb-[25px] font-medium text-text3">
+              <p className="text-sm mb-[25px] font-medium text-text3 text-left">
                 It will help fill amount box by click, place each amount by
                 comma, ex: 10,20,30,40
               </p>
               <FormGroup>
                 <Label>Campaign End Method</Label>
                 <Dropdown>
-                  <Dropdown.Select placeholder="Select one">
+                  <Dropdown.Select placeholder="Select one"></Dropdown.Select>
+                  <Dropdown.List>
                     <Dropdown.Option>Tran Van Dat</Dropdown.Option>
-                    <Dropdown.Option>Nguyen Thi Hanh</Dropdown.Option>
-                    <Dropdown.Option>Nguyễn Huỳnh Bảo Trân</Dropdown.Option>
-                  </Dropdown.Select>
+                    <Dropdown.Option>Tran Van A</Dropdown.Option>
+                    <Dropdown.Option>Tran Van B</Dropdown.Option>
+                    <Dropdown.Option>Ngo Thi C</Dropdown.Option>
+                  </Dropdown.List>
                 </Dropdown>
               </FormGroup>
               <FormGroup>
                 <Label>Start Date</Label>
                 <Input
-                  name="startDate"
+                  name="star_tDate"
                   placeholder="Start Date"
                   control={control}
                 ></Input>
@@ -164,23 +166,25 @@ const CampaignAddNew = () => {
                   control={control}
                 ></Input>
               </FormGroup>
-              <p className="text-sm font-medium text-text3 mb-[45px]">
+              <p className="text-sm font-medium text-text3 mb-[45px] text-start">
                 Place Youtube or Vimeo Video URL
               </p>
               <FormGroup>
                 <Label>Country</Label>
                 <Dropdown>
-                  <Dropdown.Select placeholder="Country">
-                    <Dropdown.Option>Tran van C</Dropdown.Option>
-                    <Dropdown.Option>Ngo Quynh Diem Chau</Dropdown.Option>
-                    <Dropdown.Option>Phan Thi Kieu Tram</Dropdown.Option>
-                  </Dropdown.Select>
+                  <Dropdown.Select placeholder="Select a Country"></Dropdown.Select>
+                  <Dropdown.List>
+                    <Dropdown.Option>Tran Van Dat</Dropdown.Option>
+                    <Dropdown.Option>Tran Van A</Dropdown.Option>
+                    <Dropdown.Option>Tran Van B</Dropdown.Option>
+                    <Dropdown.Option>Ngo Thi C</Dropdown.Option>
+                  </Dropdown.List>
                 </Dropdown>
               </FormGroup>
               <FormGroup>
                 <Label>End Date</Label>
                 <Input
-                  name="endDate"
+                  name="end_Date"
                   placeholder="End Date"
                   control={control}
                 ></Input>
@@ -189,12 +193,12 @@ const CampaignAddNew = () => {
           </FormRow>
         </form>
 
-        <div className="flex items-center justify-center mt-[6px]">
-          <Button kind="primary" className="px-10">
+        <div className="text-center">
+          <Button kind="primary" className="px-10 mx-auto ">
             Submit new campaign{" "}
           </Button>
         </div>
-      </div>
+      </FormGroup>
     </div>
   );
 };

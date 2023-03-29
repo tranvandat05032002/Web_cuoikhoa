@@ -2,14 +2,13 @@ import React from "react";
 import Gap40 from "../components/common/Gap40";
 import Heading from "../components/common/Heading";
 import { IconPlus, IconPlusSmall } from "../components/icons";
-import LayoutDashboard from "../layout/LayoutDashboard";
 import CampaignFeature from "../modules/campaign/CampaignFeature";
 import CampaignGrid from "../modules/campaign/CampaignGrid";
 import Button from "../components/button/Button";
 
 const CampaignPage = () => {
   return (
-    <LayoutDashboard>
+    <React.Fragment>
       <Gap40>
         <div className="px-10 py-[31px] bg-white flex items-center justify-between rounded-3xl">
           <div className="flex items-start gap-x-[25px]">
@@ -53,7 +52,7 @@ const CampaignPage = () => {
           <IconPlusSmall></IconPlusSmall>
         </Button>
       </Gap40>
-    </LayoutDashboard>
+    </React.Fragment>
   );
 };
 
