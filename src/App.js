@@ -1,13 +1,23 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import LayoutDashboard from "./layout/LayoutDashboard";
+import Modal from "react-modal";
 const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
 const SignInPage = React.lazy(() => import("./pages/SignInPage"));
 const DashboardPage = React.lazy(() => import("./pages/DashboardPage"));
 const CampaignPage = React.lazy(() => import("./pages/CampaignPage"));
 const StartCampaignPage = React.lazy(() => import("./pages/StartCampaignPage"));
-const CampaignView = React.lazy(() => import ("./modules/campaign/CampaignView"));
+const CampaignView = React.lazy(() =>
+  import("./modules/campaign/CampaignView")
+);
 function App() {
+  const customStyles = {
+    content: {},
+  };
+
+  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+  Modal.setAppElement("#root");
+  Modal.defaultStyles = {}
   return (
     <React.Suspense>
       <Routes>
@@ -21,7 +31,10 @@ function App() {
             path="/campaign/start-campaign"
             element={<StartCampaignPage></StartCampaignPage>}
           ></Route>
-          <Route path="/campaign/:slug" element = {<CampaignView></CampaignView>}></Route>
+          <Route
+            path="/campaign/:slug"
+            element={<CampaignView></CampaignView>}
+          ></Route>
         </Route>
         <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
         <Route path="/sign-in" element={<SignInPage></SignInPage>}></Route>
