@@ -4,6 +4,7 @@ import LayoutDashboard from "./layout/LayoutDashboard";
 import Modal from "react-modal";
 import LayoutPayment from "./layout/LayoutPayment";
 import CheckoutPage from "./pages/CheckoutPage";
+import ShippingPage from "./pages/ShippingPage";
 const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
 const SignInPage = React.lazy(() => import("./pages/SignInPage"));
 const DashboardPage = React.lazy(() => import("./pages/DashboardPage"));
@@ -42,6 +43,10 @@ function App() {
           <Route
             path="/checkout"
             element={<CheckoutPage></CheckoutPage>}
+          ></Route>
+          <Route
+            path="/shipping-address"
+            element={<ShippingPage></ShippingPage>}
           ></Route>
         </Route>
         <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
