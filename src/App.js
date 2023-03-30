@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import LayoutDashboard from "./layout/LayoutDashboard";
 import Modal from "react-modal";
+import LayoutPayment from "./layout/LayoutPayment";
+import CheckoutPage from "./pages/CheckoutPage";
 const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
 const SignInPage = React.lazy(() => import("./pages/SignInPage"));
 const DashboardPage = React.lazy(() => import("./pages/DashboardPage"));
@@ -17,7 +19,7 @@ function App() {
 
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
   Modal.setAppElement("#root");
-  Modal.defaultStyles = {}
+  Modal.defaultStyles = {};
   return (
     <React.Suspense>
       <Routes>
@@ -34,6 +36,12 @@ function App() {
           <Route
             path="/campaign/:slug"
             element={<CampaignView></CampaignView>}
+          ></Route>
+        </Route>
+        <Route element={<LayoutPayment></LayoutPayment>}>
+          <Route
+            path="/checkout"
+            element={<CheckoutPage></CheckoutPage>}
           ></Route>
         </Route>
         <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
