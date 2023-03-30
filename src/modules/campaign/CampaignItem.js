@@ -1,6 +1,6 @@
 import React from "react";
 import { IMAGE_EXPERIMENT } from "../../constants/const";
-import {CampAuth, CampCategory, CampDesc, CampMeta, CampTitle} from "./parts"
+import { CampAuth, CampCategory, CampDesc, CampMeta, CampTitle } from "./parts";
 const CampaignItem = () => {
   return (
     <div>
