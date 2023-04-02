@@ -11,6 +11,9 @@ import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { IconCoin } from "../../components/icons";
+import { v4 as uuidV4 } from "uuid";
+import useOnchange from "../../hooks/useOnchange";
+import DatePicker from "react-date-picker";
 Quill.register("modules/imageUploader", ImageUploader);
 const CampaignAddNew = () => {
   const [content, setContent] = React.useState("");
@@ -45,8 +48,34 @@ const CampaignAddNew = () => {
     }),
     []
   );
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, setValue } = useForm();
   const handleSubmitCampaign = () => {};
+  const handleSelectDropdownOption = (name, value) => {
+    setValue(name, value);
+  };
+  const [filterCountries, setFilterCountries] = useOnchange(500);
+  const [countries, setCountries] = React.useState();
+  React.useEffect(() => {
+    const fetchCountry = async () => {
+      if (!filterCountries) return;
+      try {
+        const response = await axios.request({
+          method: "GET",
+          url: `https://restcountries.com/v3.1/name/${filterCountries}`,
+        });
+        setCountries(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchCountry();
+    return () => {
+      //		cleanup func
+    };
+  }, [filterCountries]);
+  console.log(countries);
+  const [startDate, setStartDate] = React.useState(new Date());
+  const [endDate, setEndDate] = React.useState(new Date());
   return (
     <div className="bg-white rounded-xl py-10 px-[66px]">
       <div className="text-center">
@@ -69,10 +98,13 @@ const CampaignAddNew = () => {
             <Dropdown>
               <Dropdown.Select placeholder="Select the category"></Dropdown.Select>
               <Dropdown.List>
-                <Dropdown.Option>Tran Van Dat</Dropdown.Option>
-                <Dropdown.Option>Tran Van A</Dropdown.Option>
-                <Dropdown.Option>Tran Van B</Dropdown.Option>
-                <Dropdown.Option>Ngo Thi C</Dropdown.Option>
+                <Dropdown.Option
+                  onClick={() =>
+                    handleSelectDropdownOption("category", "select a category")
+                  }
+                >
+                  Tran Van Dat
+                </Dropdown.Option>
               </Dropdown.List>
             </Dropdown>
           </FormGroup>
@@ -142,11 +174,16 @@ const CampaignAddNew = () => {
               </FormGroup>
               <FormGroup>
                 <Label>Start Date</Label>
-                <Input
+                <DatePicker
+                  onChange={setStartDate}
+                  value={startDate}
+                  format="dd-MM-yyyy"
+                />
+                {/* <Input
                   name="star_tDate"
                   placeholder="Start Date"
                   control={control}
-                ></Input>
+                ></Input> */}
               </FormGroup>
             </div>
             <div>
@@ -174,20 +211,40 @@ const CampaignAddNew = () => {
                 <Dropdown>
                   <Dropdown.Select placeholder="Select a Country"></Dropdown.Select>
                   <Dropdown.List>
-                    <Dropdown.Option>Tran Van Dat</Dropdown.Option>
-                    <Dropdown.Option>Tran Van A</Dropdown.Option>
-                    <Dropdown.Option>Tran Van B</Dropdown.Option>
-                    <Dropdown.Option>Ngo Thi C</Dropdown.Option>
+                    <Dropdown.Search
+                      placeholder="Search country..."
+                      onChange={setFilterCountries}
+                    ></Dropdown.Search>
+                    {countries &&
+                      countries.length > 0 &&
+                      countries.map((country) => (
+                        <Dropdown.Option
+                          key={uuidV4()}
+                          onClick={() =>
+                            handleSelectDropdownOption(
+                              "category",
+                              "Select a category"
+                            )
+                          }
+                        >
+                          {country?.name?.common}
+                        </Dropdown.Option>
+                      ))}
                   </Dropdown.List>
                 </Dropdown>
               </FormGroup>
               <FormGroup>
                 <Label>End Date</Label>
-                <Input
+                <DatePicker
+                  value={endDate}
+                  onChange={setEndDate}
+                  format="dd-MM-yyyy"
+                ></DatePicker>
+                {/* <Input
                   name="end_Date"
                   placeholder="End Date"
                   control={control}
-                ></Input>
+                ></Input> */}
               </FormGroup>
             </div>
           </FormRow>
