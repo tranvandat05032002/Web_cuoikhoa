@@ -92,7 +92,7 @@ body {
       .react-calendar__tile--active,
       .react-calendar__tile--now
     ):enabled:focus {
-    @apply bg-transparent text-primary;
+    @apply bg-gray-100 text-primary rounded-md;
   }
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus,
@@ -104,6 +104,6 @@ body {
   .react-calendar__tile--now:enabled:focus,
   .react-calendar__tile--now,
   .react-calendar__tile--now:hover {
-    @apply bg-secondary text-white rounded-lg font-semibold;
+    @apply bg-transparent text-[#d10000] rounded-lg font-medium;
   }
 }

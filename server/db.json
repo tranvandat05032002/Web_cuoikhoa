@@ -1,54 +1,58 @@
 {
   "users": [],
-  "categories": [],
-  "campaigns": [
+  "categories": [
+    {
+      "title": "Powered Kits Learning Boxes",
+      "short_description": "Fun, durable and reusable boxes with\neco-friendly options.",
+      "goal": "10",
+      "amount": "20.12",
+      "raised": "20",
+      "video": "https://www.youtube.com/watch?v=xxM1kfj4nq8&list=RDxxM1kfj4nq8&start_radio=1&ab_channel=SoulofTheForest",
+      "category": "education",
+      "featured_image": {
+        "medium": "https://i.ibb.co/fpTGFYp/78914.jpg",
+        "thumb": "https://i.ibb.co/ts1PKMs/78914.jpg",
+        "url": "https://i.ibb.co/DCjgWDC/78914.jpg"
+      },
+      "country": "Vietnam",
+      "content": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum exercitationem enim aspernatur tempore amet repellendus consequatur voluptatem commodi corporis nam quaerat quibusdam maxime officia, vero recusandae ipsa ab similique sit?</p>",
+      "startDate": "2023-04-13T17:00:00.000Z",
+      "endDate": "2023-04-28T17:00:00.000Z",
+      "id": 2
+    },
     {
       "title": "Building Hope Village",
-      "short_description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus perspiciatis libero hic, dolor excepturi numquam eum nam nemo quae repellendus mollitia nihil laborum voluptatum quasi molestias aperiam dolore itaque iste!",
-      "goal": "100",
-      "amount": "200",
-      "prefilled": "10,20",
-      "video": "https://www.youtube.com/watch?v=yYGqCemyGmE&ab_channel=evondev",
-      "country": "Vietnam",
-      "content": "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus perspiciatis libero hic, dolor excepturi numquam eum nam nemo quae repellendus mollitia nihil laborum voluptatum quasi molestias aperiam dolore itaque iste!</p>",
-      "startDate": "2022-08-22T17:00:00.000Z",
-      "endDate": "2022-08-27T17:00:00.000Z",
-      "id": 1,
-      "userId": 1
-    },
-    {
-      "title": "",
-      "short_description": "",
-      "goal": "",
-      "amount": "",
-      "prefilled": "",
-      "video": "",
-      "country": "Peru",
-      "category": "architecture",
-      "featured_image": "https://source.unsplash.com/random",
-      "content": "<p><br></p>",
-      "startDate": "2022-08-23T16:36:28.627Z",
-      "endDate": "2022-08-23T16:36:28.627Z",
-      "id": 2,
-      "userId": 2
-    },
-    {
-      "title": "",
-      "short_description": "",
-      "goal": "",
-      "amount": "",
-      "prefilled": "",
-      "video": "",
+      "short_description": "Together we can create access for",
+      "goal": "12",
+      "amount": "30.4",
+      "raised": "20",
+      "video": "https://www.youtube.com/watch?v=xxM1kfj4nq8&list=RDxxM1kfj4nq8&start_radio=1&ab_channel=SoulofTheForest",
+      "category": "education",
       "featured_image": {
-        "medium": "https://i.ibb.co/yNwFTdv/Crowfunding.png",
-        "thumb": "https://i.ibb.co/6y30hr9/Crowfunding.png",
-        "url": "https://i.ibb.co/p1tjDbV/Crowfunding.png"
+        "medium": "https://i.ibb.co/YkqSQm5/336539280-1273532636891899-4292285677058004333-n.jpg",
+        "thumb": "https://i.ibb.co/2tfrhxz/336539280-1273532636891899-4292285677058004333-n.jpg",
+        "url": "https://i.ibb.co/Fwj132Q/336539280-1273532636891899-4292285677058004333-n.jpg"
       },
-      "content": "",
-      "startDate": "2022-08-23T17:12:09.546Z",
-      "endDate": "2022-08-23T17:12:09.546Z",
-      "id": 3,
-      "userId": 3
+      "country": "Vietnam",
+      "content": "<p><img src=\"https://i.ibb.co/Fwj132Q/336539280-1273532636891899-4292285677058004333-n.jpg\"></p>",
+      "startDate": "2023-04-02T17:00:00.000Z",
+      "endDate": "2023-04-18T17:00:00.000Z",
+      "id": 4
+    },
+    {
+      "title": "abc",
+      "short_description": "abcdadad",
+      "goal": "14",
+      "amount": "15",
+      "raised": "12",
+      "video": "https://www.youtube.com/watch?v=xxM1kfj4nq8&list=RDxxM1kfj4nq8&start_radio=1&ab_channel=SoulofTheForest",
+      "category": "architecture",
+      "country": "Vietnam",
+      "content": "<p>âsbasjasnaj</p>",
+      "startDate": "2023-04-03T17:00:00.000Z",
+      "endDate": "2023-04-14T17:00:00.000Z",
+      "id": 5
     }
-  ]
+  ],
+  "campaigns": []
 }
