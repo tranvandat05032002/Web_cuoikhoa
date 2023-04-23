@@ -9,6 +9,8 @@ import LayoutAuthentication from "../layout/LayoutAuthentication";
 import React from "react";
 import useToggleValue from "../hooks/useToggleValue";
 import ButtonGoogle from "../components/button/ButtonGoogle";
+import { useDispatch } from "react-redux";
+import { authRegister } from "../store/auth/auth-slice";
 
 const SignUpPagePage = () => {
   const validateScheme = yup.object({
@@ -22,6 +24,7 @@ const SignUpPagePage = () => {
       .required("This field is required")
       .min(8, "Password must be 8 character "),
   });
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -31,7 +34,8 @@ const SignUpPagePage = () => {
     resolver: yupResolver(validateScheme),
   });
   const handleSignUp = (values) => {
-    // console.log(values)
+    // console.log(values);
+    dispatch(authRegister(values));
   };
   const {
     handleToggleValue: handleTogglePassword,
@@ -101,7 +105,7 @@ const SignUpPagePage = () => {
             </p>
           </CheckBox>
         </div>
-        <Button className="w-full" kind = "primary" type="submit">
+        <Button className="w-full" kind="primary" type="submit">
           Create my account
         </Button>
       </form>

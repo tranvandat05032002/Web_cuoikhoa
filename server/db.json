@@ -1,5 +1,20 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "name": "tranvandat",
+      "password": "$2b$10$qjUsOCUo02DiZCneCTRh3uZUpA0H4koBH97/I5MJ2EV/85bpePuJe",
+      "email": "tranvandat@gmail.com",
+      "refreshToken": null
+    },
+    {
+      "id": 2,
+      "name": "tranvandat",
+      "password": "$2b$10$acz6illb3aprmMPBQH/sTur1e20PDbiyqI0Ny422Nm5WL1m4j4BmK",
+      "email": "tranvandat2@gmail.com",
+      "refreshToken": null
+    }
+  ],
   "categories": [
     {
       "title": "Powered Kits Learning Boxes",
