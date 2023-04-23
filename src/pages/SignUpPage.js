@@ -34,7 +34,6 @@ const SignUpPagePage = () => {
     resolver: yupResolver(validateScheme),
   });
   const handleSignUp = (values) => {
-    // console.log(values);
     dispatch(authRegister(values));
   };
   const {

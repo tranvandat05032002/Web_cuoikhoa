@@ -3,15 +3,15 @@
     {
       "id": 1,
       "name": "tranvandat",
-      "password": "$2b$10$qjUsOCUo02DiZCneCTRh3uZUpA0H4koBH97/I5MJ2EV/85bpePuJe",
+      "password": "$2b$10$v.MTnbnSIgAmts.WsKyNauQ2MYMUBch/XhLsyYF9N7Xv6T8GOx6FC",
       "email": "tranvandat@gmail.com",
       "refreshToken": null
     },
     {
       "id": 2,
-      "name": "tranvandat",
-      "password": "$2b$10$acz6illb3aprmMPBQH/sTur1e20PDbiyqI0Ny422Nm5WL1m4j4BmK",
-      "email": "tranvandat2@gmail.com",
+      "name": "Tran van Dat",
+      "password": "$2b$10$CpweFjXQ8wbHCpVdgmau/.O0s7hR70udjIHFoToB0Rv10HIcsyMP.",
+      "email": "henrryy@gmail.com",
       "refreshToken": null
     }
   ],
