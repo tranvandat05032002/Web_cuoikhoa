@@ -28,6 +28,7 @@ const SignUpPagePage = () => {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     mode: "onSubmit",
@@ -35,6 +36,7 @@ const SignUpPagePage = () => {
   });
   const handleSignUp = (values) => {
     dispatch(authRegister(values));
+    reset({});
   };
   const {
     handleToggleValue: handleTogglePassword,
