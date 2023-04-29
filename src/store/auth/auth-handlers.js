@@ -10,6 +10,7 @@ export default function* handleAuthRegister(action) {
       toast.success("Register account successfully!")
     }
   } catch (error) {
+    toast.error("Can't register account")
     console.log(error.message);
   }
 }

@@ -13,6 +13,13 @@
       "password": "$2b$10$CpweFjXQ8wbHCpVdgmau/.O0s7hR70udjIHFoToB0Rv10HIcsyMP.",
       "email": "henrryy@gmail.com",
       "refreshToken": null
+    },
+    {
+      "id": 3,
+      "name": "tranvandatreact",
+      "password": "$2b$10$xbrDSzHCQyRzt3xii5hateXiOdOv8irbu5GRjhV0QiY4Qaej.k9bm",
+      "email": "tranvandatreact@gmail.com",
+      "refreshToken": null
     }
   ],
   "categories": [
