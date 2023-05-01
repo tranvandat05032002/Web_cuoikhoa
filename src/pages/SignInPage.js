@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ButtonGoogle from "../components/button/ButtonGoogle";
-
+import { authSign } from "../store/auth/auth-slice";
+import { useDispatch } from "react-redux";
 const SignInPage = () => {
   const validateSignIn = yup.object({
     email: yup.string().email("").required("This field is required"),
@@ -28,8 +29,9 @@ const SignInPage = () => {
     control,
     formState: { errors },
   } = useForm({ mode: "onSubmit", resolver: yupResolver(validateSignIn) });
+  const dispatch = useDispatch()
   const handleSignIn = (values) => {
-    console.log(values);
+    dispatch(authSign(values));
   };
   return (
     <div>
