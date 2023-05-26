@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const StartCampaignPage = () => {
-  const { user } = useSelector((state) => state.auth);
+  const {user} = useSelector((state) => state.auth)
+  console.log(user)
   const navigate = useNavigate();
   React.useEffect(() => {
     if (!user || !user.email) {

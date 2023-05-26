@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import LayoutPayment from "./layout/LayoutPayment";
 import CheckoutPage from "./pages/CheckoutPage";
 import ShippingPage from "./pages/ShippingPage";
+import { useSelector } from "react-redux";
 const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
 const SignInPage = React.lazy(() => import("./pages/SignInPage"));
 const DashboardPage = React.lazy(() => import("./pages/DashboardPage"));
@@ -14,6 +15,8 @@ const CampaignView = React.lazy(() =>
   import("./modules/campaign/CampaignView")
 );
 function App() {
+  const {user} = useSelector((state) => state.auth)
+  console.log(user)
   const customStyles = {
     content: {},
   };
