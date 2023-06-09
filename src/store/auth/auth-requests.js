@@ -4,20 +4,26 @@ export const requestAuthRegister = (data) => {
     ...data,
   });
 };
-
 export const requestAuthLogin = (data) => {
   return axios.post("/auth/login", {
     ...data,
   });
 };
-
-export const requestAuthFetchMe = (newToken) => {
-  if (!newToken) return;
-  const token = `Bearer ${newToken}`;
+export const requestAuthFetchMe = (token) => {
+  console.log(token);
+  if (!token) return;
   return axios.get("/me", {
     headers: {
       "Content-Type": "application/json",
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
+  });
+};
+export const requestAuthRefreshToken = (token) => {
+  console.log("called", token);
+  if (!token) return;
+  return axios.post("/token", {
+    "Content-Type": "Application/json",
+    refreshToken: token,
   });
 };

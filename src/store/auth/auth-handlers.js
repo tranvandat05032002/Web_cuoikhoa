@@ -2,10 +2,11 @@ import { call, put } from "redux-saga/effects";
 import {
   requestAuthFetchMe,
   requestAuthLogin,
+  requestAuthRefreshToken,
   requestAuthRegister,
 } from "./auth-requests";
 import { toast } from "react-toastify";
-import { saveToken } from "../../utils/auth";
+import { logOut, saveToken } from "../../utils/auth";
 import { authUpdateUser } from "./auth-slice";
 
 export default function* handleAuthRegister(action) {
@@ -13,29 +14,29 @@ export default function* handleAuthRegister(action) {
   try {
     const response = yield call(requestAuthRegister, payload);
     if (response.status === 201) {
-      toast.success("Register account successfully!");
+      toast.success("Created new account successfully");
     }
   } catch (error) {
-    toast.error("Can't register account");
-    console.log(error.message);
+    console.log(error);
   }
 }
-
-function* handleAuthLogin(action) {
-  const { payload } = action;
+function* handleAuthLogin({ payload }) {
   try {
     const response = yield call(requestAuthLogin, payload);
     if (response.data.accessToken && response.data.refreshToken) {
       saveToken(response.data.accessToken, response.data.refreshToken);
-      yield call(handleFetchMe, { payload: response.data.accessToken });
+      yield call(handleAuthFetchMe, { payload: response.data.accessToken });
     }
   } catch (error) {
-    console.log(error.message);
+    const response = error.response.data;
+    if (response.statusCode === 403) {
+      toast.error(response.error.message);
+      return;
+    }
   }
 }
 
-function* handleFetchMe({ payload }) {
-  console.log(payload);
+function* handleAuthFetchMe({ payload }) {
   try {
     const response = yield call(requestAuthFetchMe, payload);
     console.log(response);
@@ -47,9 +48,38 @@ function* handleFetchMe({ payload }) {
         })
       );
     }
-  } catch (error) {
-    console.log(error.message);
-  }
+    // response.data -> userInfo
+  } catch (error) {}
 }
 
-export { handleAuthLogin, handleFetchMe };
+function* handleAuthRefreshToken({ payload }) {
+  try {
+    const response = yield call(requestAuthRefreshToken, payload);
+    console.log(response);
+    if (response.data) {
+      saveToken(response.data.accessToken, response.data.refreshToken);
+      yield call(handleAuthFetchMe, {
+        payload: response.data.accessToken,
+      });
+    } else {
+      yield handleAuthLogOut();
+    }
+  } catch (error) {}
+}
+
+function* handleAuthLogOut() {
+  yield put(
+    authUpdateUser({
+      user: undefined,
+      accessToken: null,
+    })
+  );
+  logOut();
+}
+
+export {
+  handleAuthLogin,
+  handleAuthFetchMe,
+  handleAuthRefreshToken,
+  handleAuthLogOut,
+};

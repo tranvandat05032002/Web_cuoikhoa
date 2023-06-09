@@ -75,6 +75,7 @@ app.post("/token", (req, res) => {
   const user = users.find((user) => {
     return user.refreshToken === refreshToken;
   });
+  console.log("user ~ user:", user);
   if (!user) return res.sendStatus(403);
   try {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
@@ -117,7 +118,5 @@ app.delete("/logout", verifyToken, (req, res) => {
   updateRefreshToken(user.name, "");
   res.sendStatus(204);
 });
-app.get("/demo", (req, res) => {
-  res.json({ message: "Hello from server" });
-});
-app.listen(5000, () => console.log("Server auth started on port 5000"));
+
+app.listen(5001, () => console.log("Server auth started on port 5001"));
