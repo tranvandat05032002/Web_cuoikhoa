@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import LayoutDashboard from "./layout/LayoutDashboard";
 import Modal from "react-modal";
 import LayoutPayment from "./layout/LayoutPayment";
 import CheckoutPage from "./pages/CheckoutPage";
 import ShippingPage from "./pages/ShippingPage";
+import { useDispatch, useSelector } from "react-redux";
+import { authRefreshToken, authUpdateUser } from "./store/auth/auth-slice";
+import { getToken, logOut } from "./utils/auth";
 const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
 const SignInPage = React.lazy(() => import("./pages/SignInPage"));
 const DashboardPage = React.lazy(() => import("./pages/DashboardPage"));
@@ -14,13 +17,28 @@ const CampaignView = React.lazy(() =>
   import("./modules/campaign/CampaignView")
 );
 function App() {
-  const customStyles = {
-    content: {},
-  };
-
-  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-  Modal.setAppElement("#root");
-  Modal.defaultStyles = {};
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (user && user.id) {
+      const { access_token } = getToken();
+      console.log("useEffect ~ access_token:", access_token);
+      dispatch(
+        authUpdateUser({
+          user: user,
+          accessToken: access_token,
+        })
+      );
+    } else {
+      const { refresh_token } = getToken();
+      if (refresh_token) {
+        dispatch(authRefreshToken(refresh_token));
+      } else {
+        dispatch(authUpdateUser({}));
+        logOut();
+      }
+    }
+  }, [dispatch, user]);
   return (
     <React.Suspense>
       <Routes>
