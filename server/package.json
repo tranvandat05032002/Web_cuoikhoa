@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "startAuth": "nodemon authServer.js"
+    "startAuth": " nodemon --ignore db.json authServer.js"
   },
   "keywords": [],
   "author": "",

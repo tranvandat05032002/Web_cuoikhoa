@@ -10,7 +10,6 @@ export const requestAuthLogin = (data) => {
   });
 };
 export const requestAuthFetchMe = (token) => {
-  console.log(token);
   if (!token) return;
   return axios.get("/me", {
     headers: {
@@ -20,7 +19,6 @@ export const requestAuthFetchMe = (token) => {
   });
 };
 export const requestAuthRefreshToken = (token) => {
-  console.log("called", token);
   if (!token) return;
   return axios.post("/token", {
     "Content-Type": "Application/json",
