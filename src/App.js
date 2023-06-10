@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LayoutDashboard from "./layout/LayoutDashboard";
 import Modal from "react-modal";
 import LayoutPayment from "./layout/LayoutPayment";
@@ -19,10 +19,10 @@ const CampaignView = React.lazy(() =>
 function App() {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     if (user && user.id) {
       const { access_token } = getToken();
-      console.log("useEffect ~ access_token:", access_token);
       dispatch(
         authUpdateUser({
           user: user,
@@ -36,8 +36,10 @@ function App() {
       } else {
         dispatch(authUpdateUser({}));
         logOut();
+        navigate("/login");
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, user]);
   return (
     <React.Suspense>

@@ -24,7 +24,7 @@ function* handleAuthLogin({ payload }) {
   try {
     const response = yield call(requestAuthLogin, payload);
     if (response.data.accessToken && response.data.refreshToken) {
-      saveToken(response.data.accessToken, response.data.refreshToken);
+      saveToken(response.data.accessToken, response.data.refreshToken); // set token on Cookies
       yield call(handleAuthFetchMe, { payload: response.data.accessToken });
     }
   } catch (error) {
@@ -39,7 +39,6 @@ function* handleAuthLogin({ payload }) {
 function* handleAuthFetchMe({ payload }) {
   try {
     const response = yield call(requestAuthFetchMe, payload);
-    console.log(response);
     if (response.status === 200) {
       yield put(
         authUpdateUser({
@@ -55,7 +54,6 @@ function* handleAuthFetchMe({ payload }) {
 function* handleAuthRefreshToken({ payload }) {
   try {
     const response = yield call(requestAuthRefreshToken, payload);
-    console.log(response);
     if (response.data) {
       saveToken(response.data.accessToken, response.data.refreshToken);
       yield call(handleAuthFetchMe, {

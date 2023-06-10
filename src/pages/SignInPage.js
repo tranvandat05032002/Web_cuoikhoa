@@ -6,12 +6,12 @@ import { useForm } from "react-hook-form";
 import FormGroup from "../components/common/FormGroup";
 import { Input, Label } from "../components";
 import { IconEyeToggle } from "../components/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ButtonGoogle from "../components/button/ButtonGoogle";
 import { authLogin } from "../store/auth/auth-slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const SignInPage = () => {
   const validateSignIn = yup.object({
     email: yup.string().email("").required("This field is required"),
@@ -30,9 +30,17 @@ const SignInPage = () => {
     formState: { errors },
   } = useForm({ mode: "onSubmit", resolver: yupResolver(validateSignIn) });
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
   const handleSignIn = (values) => {
     dispatch(authLogin(values));
   };
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (user && user.id) {
+      navigate("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   return (
     <div>
       <LayoutAuthentication heading="Welcome Back!">
