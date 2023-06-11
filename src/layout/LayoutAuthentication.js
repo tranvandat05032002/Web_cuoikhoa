@@ -6,15 +6,15 @@ import ErrorComponent from "../components/common/ErrorComponent";
 import { useSelector } from "react-redux";
 const LayoutAuthentication = (props) => {
   const { children, heading = "" } = props;
-  // const { user } = useSelector((state) => state.auth);
-  // const navigate = useNavigate();
-  // React.useEffect(() => {
-  //   if (!user || !user.email) {
-  //     console.log(1212);
-  //     navigate("/login");
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [user]);
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (user && user.id) {
+      navigate("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+  if (user && user.id) return null;
   return (
     <div className="relative w-full min-h-screen p-10 bg-lite dark:bg-darkbg isolate">
       <img

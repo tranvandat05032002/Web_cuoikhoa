@@ -30,17 +30,9 @@ const SignInPage = () => {
     formState: { errors },
   } = useForm({ mode: "onSubmit", resolver: yupResolver(validateSignIn) });
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
   const handleSignIn = (values) => {
     dispatch(authLogin(values));
   };
-  const navigate = useNavigate();
-  React.useEffect(() => {
-    if (user && user.id) {
-      navigate("/");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
   return (
     <div>
       <LayoutAuthentication heading="Welcome Back!">
