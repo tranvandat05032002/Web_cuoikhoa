@@ -1,7 +1,8 @@
-import { useSelector } from "react-redux";
-import useRefreshToken from "./useRefreshToken";
 import React from "react";
+import useRefreshToken from "./useRefreshToken";
+import { useSelector } from "react-redux";
 import { axiosPrivate } from "../api/axios";
+
 export default function useAxiosPrivate() {
   const refresh = useRefreshToken();
   const { auth } = useSelector((state) => state);
@@ -15,22 +16,21 @@ export default function useAxiosPrivate() {
       },
       (error) => Promise.reject(error)
     );
+
     const responseInterceptor = axiosPrivate.interceptors.response.use(
       (response) => response,
       async (error) => {
         const prevRequest = error.config;
         if (error?.response?.status === 403 && !prevRequest.sent) {
           prevRequest.sent = true;
-          const newAccessToken = refresh();
+          const newAccessToken = await refresh();
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-
           return axiosPrivate(prevRequest);
         }
         return Promise.reject(error);
       }
     );
 
-    //cleanup function
     return () => {
       axiosPrivate.interceptors.request.eject(requestInterceptor);
       axiosPrivate.interceptors.response.eject(responseInterceptor);
