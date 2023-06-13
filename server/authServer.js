@@ -27,7 +27,6 @@ const generateTokens = (payload) => {
   return { accessToken, refreshToken };
 };
 function updateRefreshToken(name, refreshToken) {
-  console.log("updateRefreshToken ~ name", name);
   users = users.map((user) => {
     if (user.name === name) {
       return {
@@ -75,7 +74,6 @@ app.post("/token", (req, res) => {
   const user = users.find((user) => {
     return user.refreshToken === refreshToken;
   });
-  console.log("user ~ user:", user);
   if (!user) return res.sendStatus(403);
   try {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
