@@ -44,6 +44,7 @@ const CampaignAddNew = () => {
               "Content-Type": "multipart/form-data",
             },
           });
+          console.log(response);
           return response.data.data.url;
         },
       },
@@ -81,21 +82,22 @@ const CampaignAddNew = () => {
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
   const resetData = () => {
-    setStartDate("")
-    setEndDate("")
-    setContent("")
-    reset({})
-  }
+    setStartDate("");
+    setEndDate("");
+    setContent("");
+    reset({});
+  };
   const handleAddNewCampaign = async (values) => {
+    console.log(values);
     try {
-      await axios.post(`${apiURL}/categories`, {
+      await axios.post(`${apiURL}/campaigns`, {
         ...values,
         content,
         startDate,
         endDate,
       });
       toast.success("create new campaign successfully");
-      resetData()
+      resetData();
     } catch (error) {
       toast.error("Can't create new campaign");
     }
